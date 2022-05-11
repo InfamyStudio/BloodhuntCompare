@@ -8,16 +8,16 @@ def getUserStats(user):
     doc = BeautifulSoup(page.content, 'html.parser')
 
     title = doc.title.text.split()[0]
-    print(title)
+    # print(title)
 
     sNames = ["Win %","Wins","K/D Ratio","Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
     container = doc.find(class_="segment-stats area-main-stats lifetime card bordered header-bordered responsive")
     values = container.find_all(class_="value")
     
-    i = 0
-    for value in values:
-        print(sNames[i] + ": " + value.text)
-        i += 1
+    # i = 0
+    # for value in values:
+    #     print(sNames[i] + ": " + value.text)
+    #     i += 1
 
     wPercentage = values[0].text
     wins = values[1].text
@@ -62,16 +62,16 @@ def compareUsers(firstUser, secondUser):
     firstUserTitle = firstUser[16]
     secondUserTitle = secondUser[16]
     # wPercentage Compare:
-    if int(firstUser[0][:-1]) > int(secondUser[0][:-1]):
-        wPercentageDiff = int(firstUser[0][:-1]) - int(secondUser[0][:-1])
+    if float(firstUser[0][:-1]) > float(secondUser[0][:-1]):
+        wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
         print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
         print(firstUserTitle + " Has the highest Win %")
-    elif int(firstUser[0][:-1]) < int(secondUser[0][:-1]):
-        wPercentageDiff = int(secondUser[0][:-1]) - int(firstUser[0][:-1])
+    elif float(firstUser[0][:-1]) < float(secondUser[0][:-1]):
+        wPercentageDiff = float(secondUser[0][:-1]) - float(firstUser[0][:-1])
         print(secondUserTitle + " Win % is: " + secondUser[0] + ", " + firstUserTitle + " Win % is: " + firstUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
         print(secondUserTitle + " Has the highest Win %")
-    elif int(firstUser[0][:-1]) == int(secondUser[0][:-1]):
-        wPercentageDiff = int(firstUser[0][:-1]) - int(secondUser[0][:-1])
+    elif float(firstUser[0][:-1]) == float(secondUser[0][:-1]):
+        wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
         print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
         print(firstUserTitle + " and " + secondUserTitle + " Have the same Win %")
 
