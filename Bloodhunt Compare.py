@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+# IS ID: 16368163461376577876 , ILB ID: 10363298386750518290
 def getUserStats(user):
     url = "https://tracker.gg/bloodhunt/profile/" + str(user) + "/overview?playlist=BattleRoyale_Casual&season=1&mode=Trios"
     page = requests.get(url)
     doc = BeautifulSoup(page.content, 'html.parser')
 
-    title = doc.title.text
+    title = doc.title.text.split()[0]
     print(title)
 
     sNames = ["Win %","Wins","K/D Ratio","Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
@@ -35,7 +36,7 @@ def getUserStats(user):
     damagePerMatch = values[14].text
     bAccuracy = values[15].text
 
-    return wPercentage, wins, kdRatio, damagePerMinute, kills, deaths, assists, losses, alliesRevived, diableries, damageDone, distanceTraveled, avgTimeAlive, killPerMatch, damagePerMatch, bAccuracy
+    return wPercentage, wins, kdRatio, damagePerMinute, kills, deaths, assists, losses, alliesRevived, diableries, damageDone, distanceTraveled, avgTimeAlive, killPerMatch, damagePerMatch, bAccuracy, title
 
 
 def userInput():
@@ -58,10 +59,26 @@ def userInput():
             print("Invalid Value Input")
 
 def compareUsers(firstUser, secondUser):
-    print("Comparing Users...")
+    firstUserTitle = firstUser[16]
+    secondUserTitle = secondUser[16]
+    # wPercentage Compare:
+    if int(firstUser[0][:-1]) > int(secondUser[0][:-1]):
+        wPercentageDiff = int(firstUser[0][:-1]) - int(secondUser[0][:-1])
+        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(firstUserTitle + " Has the highest Win %")
+    elif int(firstUser[0][:-1]) < int(secondUser[0][:-1]):
+        wPercentageDiff = int(secondUser[0][:-1]) - int(firstUser[0][:-1])
+        print(secondUserTitle + " Win % is: " + secondUser[0] + ", " + firstUserTitle + " Win % is: " + firstUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(secondUserTitle + " Has the highest Win %")
+    elif int(firstUser[0][:-1]) == int(secondUser[0][:-1]):
+        wPercentageDiff = int(firstUser[0][:-1]) - int(secondUser[0][:-1])
+        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(firstUserTitle + " and " + secondUserTitle + " Have the same Win %")
+
 
 if __name__ == "__main__":
          users = userInput()
          firstUser = getUserStats(users[0])
          secondUser = getUserStats(users[1])
          compareUsers (firstUser, secondUser)
+         input("Press Any Key To Exit")
