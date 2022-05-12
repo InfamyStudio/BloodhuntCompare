@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+import scripts.comparison as c
+
 # IS ID: 16368163461376577876 , ILB ID: 10363298386750518290
 def getUserStats(user):
     url = "https://tracker.gg/bloodhunt/profile/" + str(user) + "/overview?playlist=BattleRoyale_Casual&season=1&mode=Trios"
@@ -57,29 +59,14 @@ def userInput():
         except ValueError:
             print("Invalid Value Input")
 
-def wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
-    if float(firstUser[0][:-1]) > float(secondUser[0][:-1]):
-        wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
-        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2))+ "%")
-        print(firstUserTitle + " Has the highest Win %")
-    elif float(firstUser[0][:-1]) < float(secondUser[0][:-1]):
-        wPercentageDiff = float(secondUser[0][:-1]) - float(firstUser[0][:-1])
-        print(secondUserTitle + " Win % is: " + secondUser[0] + ", " + firstUserTitle + " Win % is: " + firstUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2))+ "%")
-        print(secondUserTitle + " Has the highest Win %")
-    elif float(firstUser[0][:-1]) == float(secondUser[0][:-1]):
-        wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
-        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2)) + "%")
-        print(firstUserTitle + " and " + secondUserTitle + " Have the same Win %")
-    else:
-        print("Error")
-
-
 def compareUsers(firstUser, secondUser):
-    # sNames = ["Wins","K/D Ratio","Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
+    # sNames = ["Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
     firstUserTitle = firstUser[16]
     secondUserTitle = secondUser[16]
-    wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
-
+    c.wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.winsCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.kdRatioCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.damageperminCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
 
 
 if __name__ == "__main__":
