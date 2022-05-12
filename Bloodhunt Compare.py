@@ -38,7 +38,6 @@ def getUserStats(user):
 
     return wPercentage, wins, kdRatio, damagePerMinute, kills, deaths, assists, losses, alliesRevived, diableries, damageDone, distanceTraveled, avgTimeAlive, killPerMatch, damagePerMatch, bAccuracy, title
 
-
 def userInput():
     while True:
         try:
@@ -58,22 +57,29 @@ def userInput():
         except ValueError:
             print("Invalid Value Input")
 
-def compareUsers(firstUser, secondUser):
-    firstUserTitle = firstUser[16]
-    secondUserTitle = secondUser[16]
-    # wPercentage Compare:
+def wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
     if float(firstUser[0][:-1]) > float(secondUser[0][:-1]):
         wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
-        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2))+ "%")
         print(firstUserTitle + " Has the highest Win %")
     elif float(firstUser[0][:-1]) < float(secondUser[0][:-1]):
         wPercentageDiff = float(secondUser[0][:-1]) - float(firstUser[0][:-1])
-        print(secondUserTitle + " Win % is: " + secondUser[0] + ", " + firstUserTitle + " Win % is: " + firstUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(secondUserTitle + " Win % is: " + secondUser[0] + ", " + firstUserTitle + " Win % is: " + firstUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2))+ "%")
         print(secondUserTitle + " Has the highest Win %")
     elif float(firstUser[0][:-1]) == float(secondUser[0][:-1]):
         wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
-        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(wPercentageDiff))
+        print(firstUserTitle + " Win % is: " + firstUser[0] + ", " + secondUserTitle + " Win % is: " + secondUser[0] + ". Win % Difference is: " + str(round(wPercentageDiff,2)) + "%")
         print(firstUserTitle + " and " + secondUserTitle + " Have the same Win %")
+    else:
+        print("Error")
+
+
+def compareUsers(firstUser, secondUser):
+    # sNames = ["Wins","K/D Ratio","Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
+    firstUserTitle = firstUser[16]
+    secondUserTitle = secondUser[16]
+    wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+
 
 
 if __name__ == "__main__":
