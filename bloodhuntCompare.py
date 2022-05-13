@@ -60,7 +60,6 @@ def userInput():
             print("Invalid Value Input")
 
 def compareUsers(firstUser, secondUser):
-    # sNames = ["Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
     firstUserTitle = firstUser[16]
     secondUserTitle = secondUser[16]
     c.wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
@@ -75,6 +74,10 @@ def compareUsers(firstUser, secondUser):
     c.diableriesCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
     c.damageDoneCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
     c.distanceTraveledCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.averageTimeAliveCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.killPerMatchCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.damagePerMatchCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.bulletAccuracyCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
 
 if __name__ == "__main__":
          users = userInput()

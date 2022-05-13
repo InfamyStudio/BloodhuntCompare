@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
     if float(firstUser[0][:-1]) > float(secondUser[0][:-1]):
         wPercentageDiff = float(firstUser[0][:-1]) - float(secondUser[0][:-1])
@@ -142,4 +144,54 @@ def distanceTraveledCompare(firstUser, secondUser, firstUserTitle, secondUserTit
     else:
         print("Error")
 
+def averageTimeAliveCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
+    firstUserDateTime = datetime.strptime(firstUser[12][:-1].replace("m ",":"), "%M:%S")
+    secondUserDateTime = datetime.strptime(secondUser[12][:-1].replace("m ",":"), "%M:%S")
+    timeAliveFU = firstUserDateTime.minute * 60 + firstUserDateTime.second
+    timeAliveSU = secondUserDateTime.minute * 60 + secondUserDateTime.second
+    if int(timeAliveFU) > int(timeAliveSU):
+        timeAliveDiff = int(timeAliveFU) - int(timeAliveSU)
+        print(firstUserTitle + " Has the most Time Alive: " + firstUser[12] + ". " + secondUserTitle + " Time Alive is: " + secondUser[12] + ". Time Alive Difference is: " + str(timeAliveDiff) + " seconds")
+    elif int(timeAliveFU) < int(timeAliveSU):
+        timeAliveDiff = int(timeAliveSU) - int(timeAliveFU)
+        print(secondUserTitle + " Has the most Time Alive: " + secondUser[12] + ". " + firstUserTitle + " Time Alive is: " + firstUser[12] + ". Time Alive Difference is: " + str(timeAliveDiff) + " seconds")
+    elif int(timeAliveFU) == int(timeAliveSU):
+        print(firstUserTitle + " and " + secondUserTitle + " Have the same Time Alive: " + firstUser[12])
+    else:
+        print("Error")
 
+def killPerMatchCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
+    if float(firstUser[13]) > float(secondUser[13]):
+        killPerMatchDiff = float(firstUser[13]) - float(secondUser[13])
+        print(firstUserTitle + " Has the most Kills per Match: " + firstUser[13] + ", " + secondUserTitle + " Kills per Match is: " + secondUser[13] + ". Kills per Match Difference is: " + str(round(killPerMatchDiff,2)))
+    elif float(firstUser[13]) < float(secondUser[13]):
+        killPerMatchDiff = float(secondUser[13]) - float(firstUser[13])
+        print(secondUserTitle + " Has the most Kills per Match: " + secondUser[13] + ", " + firstUserTitle + " Kills per Match is: " + firstUser[13] + ". Kills per Match Difference is: " + str(round(killPerMatchDiff,2)))
+    elif float(firstUser[13]) == float(secondUser[13]):
+        print(firstUserTitle + " and " + secondUserTitle + " Have the same Kills per Match: " + firstUser[13])
+    else:
+        print("Error")
+
+def damagePerMatchCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
+    if int(firstUser[14].replace(",", "")) > int(secondUser[14].replace(",", "")):
+        damagePerMatchDiff = int(firstUser[14].replace(",", "")) - int(secondUser[14].replace(",", ""))
+        print(firstUserTitle + " Has the most Damage per Match: " + firstUser[14] + ". " + secondUserTitle + " Damage per Match is: " + secondUser[14] + ". Damage per Match Difference is: " + str(damagePerMatchDiff))
+    elif int(firstUser[14].replace(",", "")) < int(secondUser[14].replace(",", "")):
+        damagePerMatchDiff = int(secondUser[14].replace(",", "")) - int(firstUser[14].replace(",", ""))
+        print(secondUserTitle + " Has the most Damage per Match: " + secondUser[14] + ". " + firstUserTitle + " Damage per Match is: " + firstUser[14] + ". Damage per Match Difference is: " + str(damagePerMatchDiff))
+    elif int(firstUser[14].replace(",", "")) == int(secondUser[14].replace(",", "")):
+        print(firstUserTitle + " and " + secondUserTitle + " Have the same Damage per Match: " + firstUser[14])
+    else:
+        print("Error")
+
+def bulletAccuracyCompare(firstUser, secondUser, firstUserTitle, secondUserTitle):
+    if float(firstUser[15][:-1]) > float(secondUser[15][:-1]):
+        bulletAccuracyDiff = float(firstUser[15][:-1]) - float(secondUser[15][:-1])
+        print(firstUserTitle + " Has the most Bullet Accuracy: " + firstUser[15] + ". " + secondUserTitle + " Bullet Accuracy is: " + secondUser[15] + ". Bullet Accuracy Difference is: " + str(round(bulletAccuracyDiff,2)) + "%")
+    elif float(firstUser[15][:-1]) < float(secondUser[15][:-1]):
+        bulletAccuracyDiff = float(secondUser[15][:-1]) - float(firstUser[15][:-1])
+        print(secondUserTitle + " Has the most Bullet Accuracy: " + secondUser[15] + ". " + firstUserTitle + " Bullet Accuracy is: " + firstUser[15] + ". Bullet Accuracy Difference is: " + str(round(bulletAccuracyDiff,2)) + "%")
+    elif float(firstUser[15][:-1]) == float(secondUser[15][:-1]):
+        print(firstUserTitle + " and " + secondUserTitle + " Have the same Bullet Accuracy: " + firstUser[15])
+    else:
+        print("Error")
