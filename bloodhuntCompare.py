@@ -60,14 +60,21 @@ def userInput():
             print("Invalid Value Input")
 
 def compareUsers(firstUser, secondUser):
-    # sNames = ["Damage/min","Kills","Deaths","Assists","Losses","Allies Revived","Diableries","Damage Done","Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
+    # sNames = ["Distance Traveled","Avg Time Alive","Kills/match","Damage/match","Bullet Accuracy"]
     firstUserTitle = firstUser[16]
     secondUserTitle = secondUser[16]
     c.wPercentageCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
     c.winsCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
     c.kdRatioCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
     c.damageperminCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
-
+    c.killsCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.deathsCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.assistsCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.lossesCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.alliesRevivedCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.diableriesCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.damageDoneCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
+    c.distanceTraveledCompare(firstUser, secondUser, firstUserTitle, secondUserTitle)
 
 if __name__ == "__main__":
          users = userInput()
