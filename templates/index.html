@@ -16,16 +16,32 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container">
-            <div class="text-center mt-5">
+            <div style="font-size: 15px;" class="text-center mt-5">
                 <h1>BloodHunt Compare</h1>
                 <p class="lead">BloodHunt Advanced Comparing Tool</p>
                 <p>Compare All Player Stats</p>
+                <p> {{ win_percentage }}</p>
+                <p> {{ wins }}</p>
+                <p> {{ kd_ratio }}</p>
+                <p> {{ damage_per_min }}</p>
+                <p> {{ kills }}</p>
+                <p> {{ deaths }}</p>
+                <p> {{ assists }}</p>
+                <p> {{ losses }}</p>
+                <p> {{ allies_revived }}</p>
+                <p> {{ diableries }}</p>
+                <p> {{ damage_done }}</p>
+                <p> {{ distance_traveled }}</p>
+                <p> {{ average_time_alive }}</p>
+                <p> {{ kill_per_match }}</p>
+                <p> {{ damage_per_match }}</p>
+                <p> {{ bullet_accuracy }}</p>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
