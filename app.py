@@ -1,14 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<p>Index</p>"
-
-@app.route("/about")
-def about():
-    return "<p>About</p>"
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
+    app.static_folder = 'static'
