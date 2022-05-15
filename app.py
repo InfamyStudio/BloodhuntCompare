@@ -4,6 +4,8 @@ import scripts.getuserstats as g
 
 
 app = Flask(__name__)
+app.static_folder = 'static'
+app.run(debug=True)
 
 @app.route("/")
 def index():
@@ -34,7 +36,3 @@ def index():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-if __name__ == "__main__":
-    app.run(debug=True)
-    app.static_folder = 'static'
