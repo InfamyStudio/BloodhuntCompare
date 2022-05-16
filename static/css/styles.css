@@ -76,15 +76,6 @@
   }
 }
 
-/* .background {
-  background: hsla(0, 50%, 1%, 1);
-  background: linear-gradient(90deg, hsla(0, 50%, 1%, 1) 5%, hsla(2, 86%, 55%, 1) 48%, hsla(0, 23%, 3%, 1) 95%);
-  background: -moz-linear-gradient(90deg, hsla(0, 50%, 1%, 1) 5%, hsla(2, 86%, 55%, 1) 48%, hsla(0, 23%, 3%, 1) 95%);
-  background: -webkit-linear-gradient(90deg, hsla(0, 50%, 1%, 1) 5%, hsla(2, 86%, 55%, 1) 48%, hsla(0, 23%, 3%, 1) 95%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#030101", endColorstr="#EF2F28", GradientType=1 );
-  color: white;
-} */
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
